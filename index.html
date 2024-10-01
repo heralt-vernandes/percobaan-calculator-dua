@@ -12,7 +12,7 @@
     font-family: Gotham Rounded, sans-serif;
     font-weight: normal;
   }
-
+  
   body {
     padding: 0;
     margin: 0;
@@ -22,7 +22,7 @@
     align-items: center;
     min-height: 100vh;
   }
-
+  
   .calculator-grid {
     display: grid;
     justify-content: center;
@@ -34,7 +34,7 @@
     padding: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
-
+  
   .search-column {
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 15px;
@@ -46,16 +46,16 @@
     justify-content: center;
     width: 300px;
   }
-
+  
   .search-column h2 {
     color: white;
     margin-bottom: 20px;
   }
-
+  
   .search-column form {
     width: 100%;
   }
-
+  
   .search-column input[type="text"] {
     width: 100%;
     padding: 10px;
@@ -63,7 +63,7 @@
     border-radius: 5px;
     margin-bottom: 10px;
   }
-
+  
   .search-column input[type="submit"] {
     width: 100%;
     padding: 10px;
@@ -74,11 +74,11 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-
+  
   .search-column input[type="submit"]:hover {
     background-color: #357ae8;
   }
-
+  
   .calculator-grid > button {
     cursor: pointer;
     font-size: 1.5rem;
@@ -90,34 +90,34 @@
     transition: all 0.2s ease;
     color: var(--button-color);
   }
-
+  
   .calculator-grid > button:hover {
     background-color: rgba(255, 255, 255, 0.9);
     transform: translateY(-2px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
-
+  
   .calculator-grid > button:active {
     transform: scale(0.95);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
-
+  
   @keyframes buttonClick {
     0% { transform: scale(1); }
     50% { transform: scale(0.95); }
     100% { transform: scale(1); }
   }
-
+  
   .button-click {
     animation: buttonClick 0.15s ease;
   }
-
+  
   .span-two {
     grid-column: span 2;
     background-color: var(--button-color) !important;
     color: var(--button-bg) !important;
   }
-
+  
   .output {
     grid-column: 1 / -1;
     background-color: var(--output-bg);
@@ -132,17 +132,17 @@
     margin-bottom: 10px;
     box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.3);
   }
-
+  
   .output .previous-operand {
     color: rgba(255, 255, 255, 0.75);
     font-size: 1.2rem;
   }
-
+  
   .output .current-operand {
     color: var(--output-color);
     font-size: 2rem;
   }
-
+  
   .ad-column {
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 15px;
@@ -157,11 +157,11 @@
     color: white;
     text-align: center;
   }
-
+  
   .ad-column h2 {
     margin-bottom: 20px;
   }
-
+  
   .ad-column img {
     width: 150px;
     height: 150px;
@@ -169,11 +169,11 @@
     border-radius: 10px;
     margin-bottom: 20px;
   }
-
+  
   .ad-column p {
     margin-bottom: 20px;
   }
-
+  
   .ad-column button {
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -183,11 +183,11 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-
+  
   .ad-column button:hover {
     background-color: #45a049;
   }
-
+  
   .modal {
     display: none;
     position: fixed;
@@ -198,7 +198,7 @@
     height: 100%;
     background-color: rgba(0,0,0,0.4);
   }
-
+  
   .modal-content {
     background-color: #fefefe;
     margin: 5% auto;
@@ -210,7 +210,7 @@
     max-height: 80vh; /* Set maximum height to 80% of viewport height */
     overflow-y: auto; /* Enable vertical scrolling */
   }
-
+  
   .close {
     color: #aaa;
     float: right;
@@ -218,19 +218,19 @@
     font-weight: bold;
     cursor: pointer;
   }
-
+  
   .close:hover,
   .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
   }
-
+  
   .calculator-container {
     position: relative;
     display: inline-block;
   }
-
+  
   #about-btn {
     position: absolute;
     bottom: 10px;
@@ -243,11 +243,11 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-
+  
   #about-btn:hover {
     background-color: rgba(255, 255, 255, 0.8);
   }
-
+  
   .page-container {
     display: flex;
     align-items: center;
@@ -256,7 +256,7 @@
     min-height: 100vh;
     padding: 20px;
   }
-
+  
   #about-btn {
     padding: 10px 15px;
     font-size: 1rem;
@@ -267,11 +267,11 @@
     transition: background-color 0.3s ease;
     height: fit-content;
   }
-
+  
   #about-btn:hover {
     background-color: rgba(255, 255, 255, 0.8);
   }
-
+  
   .page-container {
     display: flex;
     align-items: center;
@@ -280,20 +280,20 @@
     min-height: 100vh;
     padding: 20px;
   }
-
+  
   .left-column {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
   }
-
+  
   #logo {
     width: 100px; /* Adjust as needed */
     height: auto;
     margin-bottom: 10px;
   }
-
+  
   #about-btn {
     padding: 10px 15px;
     font-size: 1rem;
@@ -303,11 +303,11 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-
+  
   #about-btn:hover {
     background-color: rgba(255, 255, 255, 0.8);
   }
-
+  
   /* Modal styles remain the same */
   #character-art {
     width: 200px;
@@ -316,7 +316,7 @@
     border-radius: 10px;
     margin-bottom: 10px;
   }
-
+  
   .page-container {
     display: flex;
     justify-content: center;
@@ -325,13 +325,13 @@
     min-height: 100vh;
     padding: 20px;
   }
-
+  
   .right-column {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
-
+  
   .history-column, .converter {
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 15px;
@@ -339,12 +339,12 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     width: 250px;
   }
-
+  
   .history-column h3, .converter h3 {
     color: white;
     margin-bottom: 10px;
   }
-
+  
   #history-list {
     list-style-type: none;
     padding: 0;
@@ -352,7 +352,7 @@
     max-height: 200px;
     overflow-y: auto;
   }
-
+  
   #history-list li {
     color: white;
     margin-bottom: 5px;
@@ -360,7 +360,7 @@
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
   }
-
+  
   .converter input {
     width: 100%;
     padding: 5px;
@@ -368,7 +368,7 @@
     border-radius: 5px;
     border: none;
   }
-
+  
   #theme-toggle {
     margin-top: 10px;
     padding: 10px;
@@ -377,7 +377,7 @@
     border-radius: 5px;
     cursor: pointer;
   }
-
+  
   /* Theme classes */
   .theme-light {
     --background: linear-gradient(to right, #ff9966, #ff5e62);
@@ -386,7 +386,7 @@
     --output-bg: rgba(0, 0, 0, 0.75);
     --output-color: white;
   }
-
+  
   .theme-dark {
     --background: linear-gradient(to right, #2c3e50, #4ca1af);
     --button-bg: rgba(255, 255, 255, 0.2);
@@ -394,7 +394,7 @@
     --output-bg: rgba(255, 255, 255, 0.1);
     --output-color: white;
   }
-
+  
   .theme-blue {
     --background: linear-gradient(to right, #2196f3, #f44336);
     --button-bg: rgba(255, 255, 255, 0.3);
@@ -402,7 +402,7 @@
     --output-bg: rgba(0, 0, 0, 0.6);
     --output-color: white;
   }
-
+  
   .theme-green {
     --background: linear-gradient(to right, #4CAF50, #2196F3);
     --button-bg: rgba(255, 255, 255, 0.3);
@@ -410,13 +410,13 @@
     --output-bg: rgba(0, 0, 0, 0.6);
     --output-color: white;
   }
-
+  
   .theme-buttons {
     display: flex;
     gap: 10px;
     margin-top: 10px;
   }
-
+  
   .theme-buttons button {
     padding: 5px 10px;
     border: none;
@@ -424,7 +424,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-
+  
   .modal-content img {
     width: 200px;
     height: auto;
@@ -435,12 +435,27 @@
     margin-left: auto;
     margin-right: auto;
   }
-
+  
   /* Add some padding to the bottom of the modal content */
   .modal-content::after {
     content: "";
     display: block;
     height: 20px;
+  }
+  
+  #password-prompt {
+    margin-top: 20px;
+  }
+  
+  #password-input {
+    margin-right: 10px;
+  }
+  
+  #character-art {
+    display: none;
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
   }
   </style>
 </head>
@@ -496,12 +511,11 @@
       </div>
     </div>
   </div>
-
-  <!-- Updated About modal in Bahasa Indonesia -->
+  
+  <!-- Updated About modal with password protection -->
   <div id="about-modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <img id="character-art" src="https://raw.githubusercontent.com/heralt-vernandes/percobaan-calculator-dua/main/illust_122940393_20241001_163709.jpg" alt="Karakter Art">
       <h2>Tentang Kalkulator Ini</h2>
       <p>Dibuat oleh: Gerald Ibrani</p>
       <p>Kalkulator ini dikembangkan sebagai proyek sekolah untuk mendemonstrasikan keterampilan JavaScript dan konsep dasar pengembangan web.</p>
@@ -526,31 +540,36 @@
         <li>Gunakan konverter panjang untuk mengubah antara cm dan inci</li>
       </ol>
       <p>Terima kasih telah menggunakan kalkulator ini!</p>
+      <div id="password-prompt">
+        <input type="password" id="password-input" placeholder="Masukkan password">
+        <button id="submit-password">Lihat Gambar</button>
+      </div>
+      <img id="character-art" src="https://raw.githubusercontent.com/heralt-vernandes/percobaan-calculator-dua/main/illust_122940393_20241001_163709.jpg" alt="Karakter Art">
     </div>
   </div>
-
+  
   <script>class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
       this.previousOperandTextElement = previousOperandTextElement
       this.currentOperandTextElement = currentOperandTextElement
       this.clear()
     }
-
+  
     clear() {
       this.currentOperand = ''
       this.previousOperand = ''
       this.operation = undefined
     }
-
+  
     delete() {
       this.currentOperand = this.currentOperand.toString().slice(0, -1)
     }
-
+  
     appendNumber(number) {
       if (number === '.' && this.currentOperand.includes('.')) return
       this.currentOperand = this.currentOperand.toString() + number.toString()
     }
-
+  
     chooseOperation(operation) {
       if (this.currentOperand === '') return
       if (this.previousOperand !== '' && operation !== '√' && operation !== '%') {
@@ -564,7 +583,7 @@
         this.currentOperand = ''
       }
     }
-
+  
     compute() {
       let computation
       const prev = parseFloat(this.previousOperand)
@@ -601,11 +620,11 @@
       this.operation = undefined
       this.previousOperand = ''
     }
-
+  
     changeSign() {
       this.currentOperand = (parseFloat(this.currentOperand) * -1).toString()
     }
-
+  
     getDisplayNumber(number) {
       const stringNumber = number.toString()
       const integerDigits = parseFloat(stringNumber.split('.')[0])
@@ -622,7 +641,7 @@
         return integerDisplay
       }
     }
-
+  
     updateDisplay() {
       this.currentOperandTextElement.innerText =
         this.getDisplayNumber(this.currentOperand)
@@ -634,7 +653,7 @@
       }
     }
   }
-
+  
   const numberButtons = document.querySelectorAll('[data-number]')
   const operationButtons = document.querySelectorAll('[data-operation]')
   const equalsButton = document.querySelector('[data-equals]')
@@ -642,9 +661,9 @@
   const allClearButton = document.querySelector('[data-all-clear]')
   const previousOperandTextElement = document.querySelector('[data-previous-operand]')
   const currentOperandTextElement = document.querySelector('[data-current-operand]')
-
+  
   const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
-
+  
   function addClickAnimation(button) {
     button.addEventListener('click', () => {
       button.classList.add('button-click');
@@ -653,7 +672,7 @@
       }, 150);
     });
   }
-
+  
   numberButtons.forEach(button => {
     addClickAnimation(button);
     button.addEventListener('click', () => {
@@ -661,7 +680,7 @@
       calculator.updateDisplay();
     });
   });
-
+  
   operationButtons.forEach(button => {
     addClickAnimation(button);
     button.addEventListener('click', () => {
@@ -669,64 +688,64 @@
       calculator.updateDisplay();
     });
   });
-
+  
   equalsButton.addEventListener('click', button => {
     addClickAnimation(equalsButton);
     calculator.compute();
     calculator.updateDisplay();
   });
-
+  
   allClearButton.addEventListener('click', button => {
     addClickAnimation(allClearButton);
     calculator.clear();
     calculator.updateDisplay();
   });
-
+  
   deleteButton.addEventListener('click', button => {
     addClickAnimation(deleteButton);
     calculator.delete();
     calculator.updateDisplay();
   });
-
+  
   const signButton = document.querySelector('[data-sign]')
-
+  
   signButton.addEventListener('click', button => {
     addClickAnimation(signButton);
     calculator.changeSign();
     calculator.updateDisplay();
   })
-
+  
   // About modal functionality
   const aboutBtn = document.getElementById("about-btn");
   const aboutModal = document.getElementById("about-modal");
   const closeBtn = aboutModal.querySelector(".close");
-
+  
   aboutBtn.onclick = function() {
     aboutModal.style.display = "block";
   }
-
+  
   closeBtn.onclick = function() {
     aboutModal.style.display = "none";
   }
-
+  
   window.onclick = function(event) {
     if (event.target == aboutModal) {
       aboutModal.style.display = "none";
     }
   }
-
+  
   // History function
   function addToHistory(calculation) {
     const historyList = document.getElementById('history-list');
     const listItem = document.createElement('li');
     listItem.textContent = calculation;
     historyList.insertBefore(listItem, historyList.firstChild);
-
+    
     if (historyList.children.length > 10) {
       historyList.removeChild(historyList.lastChild);
     }
   }
-
+  
   // Converter
   const cmInput = document.getElementById('cm-input');
   const inchInput = document.getElementById('inch-input');
@@ -767,6 +786,22 @@
     } else if (key === 'Escape') {
       calculator.clear();
       calculator.updateDisplay();
+    }
+  });
+
+  // Password protection for the image
+  const passwordInput = document.getElementById('password-input');
+  const submitPassword = document.getElementById('submit-password');
+  const characterArt = document.getElementById('character-art');
+  const correctPassword = 'prototype'; // Password changed to "prototype"
+
+  submitPassword.addEventListener('click', function() {
+    if (passwordInput.value.toLowerCase() === correctPassword) {
+      characterArt.style.display = 'block';
+      passwordInput.style.display = 'none';
+      submitPassword.style.display = 'none';
+    } else {
+      alert('Password salah. Coba lagi.');
     }
   });
   </script>
