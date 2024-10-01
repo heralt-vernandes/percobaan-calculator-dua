@@ -16,7 +16,7 @@
   body {
     padding: 0;
     margin: 0;
-    background: linear-gradient(to right, #ff9966, #ff5e62);
+    background: var(--background);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,11 +84,11 @@
     font-size: 1.5rem;
     border: none;
     outline: none;
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: var(--button-bg);
     border-radius: 10px;
     margin: 5px;
     transition: all 0.2s ease;
-    color: #ff5e62;
+    color: var(--button-color);
   }
   
   .calculator-grid > button:hover {
@@ -114,13 +114,13 @@
   
   .span-two {
     grid-column: span 2;
-    background-color: rgba(255, 94, 98, 0.75) !important;
-    color: white !important;
+    background-color: var(--button-color) !important;
+    color: var(--button-bg) !important;
   }
   
   .output {
     grid-column: 1 / -1;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: var(--output-bg);
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
@@ -139,7 +139,7 @@
   }
   
   .output .current-operand {
-    color: white;
+    color: var(--output-color);
     font-size: 2rem;
   }
   
@@ -201,12 +201,14 @@
   
   .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     max-width: 500px;
     border-radius: 10px;
+    max-height: 80vh; /* Set maximum height to 80% of viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
   }
   
   .close {
@@ -314,13 +316,145 @@
     border-radius: 10px;
     margin-bottom: 10px;
   }
+  
+  .page-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .history-column, .converter {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 250px;
+  }
+  
+  .history-column h3, .converter h3 {
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  #history-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  #history-list li {
+    color: white;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+  }
+  
+  .converter input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  #theme-toggle {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Theme classes */
+  .theme-light {
+    --background: linear-gradient(to right, #ff9966, #ff5e62);
+    --button-bg: rgba(255, 255, 255, 0.75);
+    --button-color: #ff5e62;
+    --output-bg: rgba(0, 0, 0, 0.75);
+    --output-color: white;
+  }
+  
+  .theme-dark {
+    --background: linear-gradient(to right, #2c3e50, #4ca1af);
+    --button-bg: rgba(255, 255, 255, 0.2);
+    --button-color: #ffffff;
+    --output-bg: rgba(255, 255, 255, 0.1);
+    --output-color: white;
+  }
+  
+  .theme-blue {
+    --background: linear-gradient(to right, #2196f3, #f44336);
+    --button-bg: rgba(255, 255, 255, 0.3);
+    --button-color: #2196f3;
+    --output-bg: rgba(0, 0, 0, 0.6);
+    --output-color: white;
+  }
+  
+  .theme-green {
+    --background: linear-gradient(to right, #4CAF50, #2196F3);
+    --button-bg: rgba(255, 255, 255, 0.3);
+    --button-color: #4CAF50;
+    --output-bg: rgba(0, 0, 0, 0.6);
+    --output-color: white;
+  }
+  
+  .theme-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .theme-buttons button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .modal-content img {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Add some padding to the bottom of the modal content */
+  .modal-content::after {
+    content: "";
+    display: block;
+    height: 20px;
+  }
   </style>
 </head>
-<body>
+<body class="theme-light">
   <div class="page-container">
     <div class="left-column">
-      <img id="character-art" src="https://raw.githubusercontent.com/heralt-vernandes/percobaan-calculator-dua/main/illust_122940393_20241001_163709.jpg" alt="Character Art">
+      <!-- Remove the character-art image from here -->
       <button id="about-btn">About</button>
+      <div class="theme-buttons">
+        <button id="theme-light">Light</button>
+        <button id="theme-dark">Dark</button>
+        <button id="theme-blue">Blue</button>
+        <button id="theme-green">Green</button>
+      </div>
     </div>
     <div class="calculator-grid">
       <div class="output">
@@ -350,21 +484,48 @@
       <button data-number>0</button>
       <button data-equals class="span-two">=</button>
     </div>
+    <div class="right-column">
+      <div class="history-column">
+        <h3>Riwayat Perhitungan</h3>
+        <ul id="history-list"></ul>
+      </div>
+      <div class="converter">
+        <h3>Konversi Panjang</h3>
+        <input type="number" id="cm-input" placeholder="cm">
+        <input type="number" id="inch-input" placeholder="inch" readonly>
+      </div>
+    </div>
   </div>
   
-  <!-- New About modal -->
+  <!-- Updated About modal in Bahasa Indonesia -->
   <div id="about-modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h2>About This Calculator</h2>
-      <p>Created by: Gerald Ibrani</p>
-      <p>This calculator was developed as a school project to demonstrate JavaScript skills and basic web development concepts.</p>
-      <p>Features include:</p>
+      <img id="character-art" src="https://raw.githubusercontent.com/heralt-vernandes/percobaan-calculator-dua/main/illust_122940393_20241001_163709.jpg" alt="Karakter Art">
+      <h2>Tentang Kalkulator Ini</h2>
+      <p>Dibuat oleh: Gerald Ibrani</p>
+      <p>Kalkulator ini dikembangkan sebagai proyek sekolah untuk mendemonstrasikan keterampilan JavaScript dan konsep dasar pengembangan web.</p>
+      <p>Fitur-fitur meliputi:</p>
       <ul>
-        <li>Basic arithmetic operations</li>
-        <li>Clear and delete functions</li>
-        <li>Responsive design</li>
+        <li>Operasi aritmatika dasar</li>
+        <li>Fungsi hapus dan bersihkan</li>
+        <li>Desain responsif</li>
+        <li>Pengubahan tema</li>
+        <li>Riwayat perhitungan</li>
+        <li>Konverter panjang</li>
+        <li>Dukungan keyboard</li>
       </ul>
+      <p>Cara penggunaan:</p>
+      <ol>
+        <li>Masukkan angka menggunakan tombol kalkulator atau keyboard Anda</li>
+        <li>Pilih operasi (+, -, *, /, ^, √, %)</li>
+        <li>Tekan sama dengan (=) atau Enter untuk melihat hasilnya</li>
+        <li>Gunakan tombol AC untuk menghapus semua, atau DEL untuk menghapus entri terakhir</li>
+        <li>Ganti tema menggunakan tombol tema</li>
+        <li>Lihat riwayat perhitungan Anda di sebelah kanan</li>
+        <li>Gunakan konverter panjang untuk mengubah antara cm dan inci</li>
+      </ol>
+      <p>Terima kasih telah menggunakan kalkulator ini!</p>
     </div>
   </div>
   
@@ -408,7 +569,7 @@
       let computation
       const prev = parseFloat(this.previousOperand)
       const current = parseFloat(this.currentOperand)
-      if (isNaN(prev) && isNaN(current)) return
+      if (isNaN(prev) || isNaN(current)) return
       switch (this.operation) {
         case '+':
           computation = prev + current
@@ -435,6 +596,8 @@
           return
       }
       this.currentOperand = computation
+      const calculation = `${prev} ${this.operation} ${current} = ${computation}`
+      addToHistory(calculation)
       this.operation = undefined
       this.previousOperand = ''
     }
@@ -551,6 +714,61 @@
       aboutModal.style.display = "none";
     }
   }
+  
+  // History function
+  function addToHistory(calculation) {
+    const historyList = document.getElementById('history-list');
+    const listItem = document.createElement('li');
+    listItem.textContent = calculation;
+    historyList.insertBefore(listItem, historyList.firstChild);
+    
+    if (historyList.children.length > 10) {
+      historyList.removeChild(historyList.lastChild);
+    }
+  }
+  
+  // Converter
+  const cmInput = document.getElementById('cm-input');
+  const inchInput = document.getElementById('inch-input');
+
+  cmInput.addEventListener('input', function() {
+    const cm = parseFloat(this.value);
+    inchInput.value = cm ? (cm / 2.54).toFixed(2) : '';
+  });
+
+  // Theme toggle
+  const themeButtons = document.querySelectorAll('.theme-buttons button');
+  const body = document.body;
+
+  themeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const theme = this.id.split('-')[1];
+      body.className = ''; // Remove all themes
+      body.classList.add(`theme-${theme}`);
+    });
+  });
+
+  // Keyboard support
+  document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    if (/[0-9]/.test(key)) {
+      calculator.appendNumber(key);
+      calculator.updateDisplay();
+    } else if (['+', '-', '*', '/', 'x'].includes(key)) {
+      let operation = key === 'x' ? '*' : key;
+      calculator.chooseOperation(operation);
+      calculator.updateDisplay();
+    } else if (key === 'Enter') {
+      calculator.compute();
+      calculator.updateDisplay();
+    } else if (key === 'Backspace') {
+      calculator.delete();
+      calculator.updateDisplay();
+    } else if (key === 'Escape') {
+      calculator.clear();
+      calculator.updateDisplay();
+    }
+  });
   </script>
 </body>
 </html>
