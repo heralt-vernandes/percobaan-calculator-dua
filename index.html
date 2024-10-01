@@ -572,11 +572,11 @@
   
     chooseOperation(operation) {
       if (this.currentOperand === '') return
-      if (this.previousOperand !== '' && operation !== '√' && operation !== '%') {
+      if (this.previousOperand !== '') {
         this.compute()
       }
       this.operation = operation
-      if (operation === '√' || operation === '%') {
+      if (operation === '√') {
         this.compute()
       } else {
         this.previousOperand = this.currentOperand
@@ -588,7 +588,7 @@
       let computation
       const prev = parseFloat(this.previousOperand)
       const current = parseFloat(this.currentOperand)
-      if (isNaN(prev) || isNaN(current)) return
+      if (isNaN(prev) && isNaN(current)) return
       switch (this.operation) {
         case '+':
           computation = prev + current
@@ -615,7 +615,9 @@
           return
       }
       this.currentOperand = computation
-      const calculation = `${prev} ${this.operation} ${current} = ${computation}`
+      const calculation = this.operation === '√' 
+        ? `√${current} = ${computation}`
+        : `${prev} ${this.operation} ${current} = ${computation}`
       addToHistory(calculation)
       this.operation = undefined
       this.previousOperand = ''
