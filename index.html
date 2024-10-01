@@ -13,10 +13,19 @@
     font-weight: normal;
   }
   
+  /* Tambahkan animasi latar belakang */
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
   body {
     padding: 0;
     margin: 0;
-    background: var(--background);
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +42,7 @@
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: floatingCalculator 3s ease-in-out infinite;
   }
   
   .search-column {
@@ -87,14 +97,15 @@
     background-color: var(--button-bg);
     border-radius: 10px;
     margin: 5px;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     color: var(--button-color);
   }
   
   .calculator-grid > button:hover {
     background-color: rgba(255, 255, 255, 0.9);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: glowingButton 1.5s infinite;
   }
   
   .calculator-grid > button:active {
@@ -131,6 +142,13 @@
     border-radius: 10px;
     margin-bottom: 10px;
     box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    animation: glowOutput 2s infinite;
+  }
+  
+  .output:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   }
   
   .output .previous-operand {
@@ -200,15 +218,85 @@
   }
   
   .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
-    max-height: 80vh; /* Set maximum height to 80% of viewport height */
+    background-color: #f8f9fa;
+    color: #333;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh; /* Set maximum height */
     overflow-y: auto; /* Enable vertical scrolling */
+    animation: modalFadeIn 0.5s ease-out;
+  }
+  
+  .modal-content h2 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .about-content {
+    padding: 0 20px;
+  }
+  
+  .about-content h3 {
+    color: #28a745;
+    margin-top: 20px;
+  }
+  
+  .about-content ul, .about-content ol {
+    padding-left: 25px;
+  }
+  
+  .about-content li {
+    margin-bottom: 8px;
+  }
+  
+  .thank-you {
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+    color: #6c757d;
+  }
+  
+  #password-prompt {
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  #password-input {
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  #submit-password {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #submit-password:hover {
+    background-color: #0056b3;
+  }
+  
+  #character-art {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-top: 20px;
+  }
+  
+  @keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   
   .close {
@@ -359,6 +447,12 @@
     padding: 5px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   
   .converter input {
@@ -422,7 +516,13 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+  }
+  
+  .theme-buttons button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: rotateTheme 0.5s linear;
   }
   
   .modal-content img {
@@ -457,18 +557,285 @@
     height: auto;
     margin-top: 20px;
   }
-  </style>
+  
+  /* Tambahkan style baru untuk modal pemilihan perangkat */
+  #device-selection-modal {
+    display: none; /* Ubah ini dari 'flex' menjadi 'none' */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .device-selection-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .device-selection-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  /* Style untuk tampilan mobile */
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
+      padding: 10px;
+      align-items: center;
+    }
+    
+    .calculator-grid {
+      grid-template-columns: repeat(4, 70px);
+      grid-template-rows: minmax(100px, auto) repeat(5, 70px);
+      margin-bottom: 20px;
+    }
+    
+    .calculator-grid > button {
+      font-size: 1.8rem;
+    }
+    
+    .output .previous-operand {
+      font-size: 1.5rem;
+    }
+    
+    .output .current-operand {
+      font-size: 2.5rem;
+    }
+    
+    .right-column {
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    .history-column, .converter {
+      width: 100%;
+    }
+    
+    .left-column {
+      order: -1;
+      margin-bottom: 20px;
+    }
+    
+    .theme-selector {
+      flex-direction: row;
+      justify-content: center;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    
+    .theme-selector h3 {
+      margin-bottom: 0;
+      margin-right: 10px;
+    }
+    
+    .theme-button {
+      margin: 0 5px;
+    }
+  }
+  
+  /* Tambahkan animasi megah */
+  @keyframes floatingCalculator {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  @keyframes glowingButton {
+    0% { box-shadow: 0 0 5px var(--button-color); }
+    50% { box-shadow: 0 0 20px var(--button-color); }
+    100% { box-shadow: 0 0 5px var(--button-color); }
+  }
+  
+  @keyframes rotateTheme {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .calculator-grid {
+    animation: floatingCalculator 3s ease-in-out infinite;
+  }
+  
+  .calculator-grid > button:hover {
+    animation: glowingButton 1.5s infinite;
+  }
+  
+  .theme-buttons button {
+    transition: all 0.3s ease;
+  }
+  
+  .theme-buttons button:hover {
+    animation: rotateTheme 0.5s linear;
+  }
+  
+  /* Tambahkan efek parallax pada latar belakang */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    z-index: -1;
+    animation: parallaxBG 20s ease infinite;
+  }
+  
+  @keyframes parallaxBG {
+    0% { transform: translateY(0) scale(1.1); }
+    50% { transform: translateY(-20px) scale(1.2); }
+    100% { transform: translateY(0) scale(1.1); }
+  }
+  
+  /* Tambahkan efek gelembung di latar belakang */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: float 4s ease-in-out infinite;
+    z-index: -1;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+  }
+  
+  /* Animasi untuk tombol sama dengan */
+  @keyframes pulseEquals {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  button[data-equals] {
+    animation: pulseEquals 1.5s infinite;
+  }
+  
+  /* Animasi untuk output */
+  @keyframes glowOutput {
+    0% { box-shadow: 0 0 5px var(--output-color); }
+    50% { box-shadow: 0 0 20px var(--output-color); }
+    100% { box-shadow: 0 0 5px var(--output-color); }
+  }
+  
+  .output {
+    animation: glowOutput 2s infinite;
+  }
+  
+  .about-content.scrollable {
+    max-height: 60vh; /* Adjust this value as needed */
+    overflow-y: auto;
+    padding-right: 15px; /* Add some padding for the scrollbar */
+  }
+  
+  /* Style the scrollbar */
+  .about-content.scrollable::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .about-content.scrollable::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  .about-content.scrollable::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  
+  .about-content.scrollable::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  .theme-selector {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .theme-selector h3 {
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  .theme-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .theme-button:hover {
+    transform: scale(1.1);
+  }
+  
+  #theme-light {
+    background: linear-gradient(to right, #ff9966, #ff5e62);
+  }
+  
+  #theme-dark {
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+  }
+  
+  #theme-blue {
+    background: linear-gradient(to right, #2196f3, #f44336);
+  }
+  
+  /* Remove the following styles */
+  .theme-buttons {
+    display: none;
+  }
+  
+  .theme-buttons button {
+    display: none;
+  }
+  
+  .theme-buttons button:hover {
+    animation: none;
+  }
+  
+  @keyframes rotateTheme {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
 </head>
 <body class="theme-light">
+  <!-- Tambahkan modal pemilihan perangkat -->
+  <div id="device-selection-modal">
+    <div class="device-selection-content">
+      <h2>Pilih Jenis Perangkat</h2>
+      <button id="desktop-btn">Desktop</button>
+      <button id="mobile-btn">Handphone</button>
+    </div>
+  </div>
+  
   <div class="page-container">
     <div class="left-column">
-      <!-- Remove the character-art image from here -->
       <button id="about-btn">About</button>
-      <div class="theme-buttons">
-        <button id="theme-light">Light</button>
-        <button id="theme-dark">Dark</button>
-        <button id="theme-blue">Blue</button>
-        <button id="theme-green">Green</button>
+      <div class="theme-selector">
+        <h3>Theme</h3>
+        <button id="theme-light" class="theme-button"></button>
+        <button id="theme-dark" class="theme-button"></button>
+        <button id="theme-blue" class="theme-button"></button>
       </div>
     </div>
     <div class="calculator-grid">
@@ -512,39 +879,59 @@
     </div>
   </div>
   
-  <!-- Updated About modal with password protection -->
+  <!-- Updated About modal with scrollable content -->
   <div id="about-modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Tentang Kalkulator Ini</h2>
-      <p>Dibuat oleh: Gerald Ibrani</p>
-      <p>Kalkulator ini dikembangkan sebagai proyek sekolah untuk mendemonstrasikan keterampilan JavaScript dan konsep dasar pengembangan web.</p>
-      <p>Fitur-fitur meliputi:</p>
-      <ul>
-        <li>Operasi aritmatika dasar</li>
-        <li>Fungsi hapus dan bersihkan</li>
-        <li>Desain responsif</li>
-        <li>Pengubahan tema</li>
-        <li>Riwayat perhitungan</li>
-        <li>Konverter panjang</li>
-        <li>Dukungan keyboard</li>
-      </ul>
-      <p>Cara penggunaan:</p>
-      <ol>
-        <li>Masukkan angka menggunakan tombol kalkulator atau keyboard Anda</li>
-        <li>Pilih operasi (+, -, *, /, ^, √, %)</li>
-        <li>Tekan sama dengan (=) atau Enter untuk melihat hasilnya</li>
-        <li>Gunakan tombol AC untuk menghapus semua, atau DEL untuk menghapus entri terakhir</li>
-        <li>Ganti tema menggunakan tombol tema</li>
-        <li>Lihat riwayat perhitungan Anda di sebelah kanan</li>
-        <li>Gunakan konverter panjang untuk mengubah antara cm dan inci</li>
-      </ol>
-      <p>Terima kasih telah menggunakan kalkulator ini!</p>
+      <div class="about-content scrollable">
+        <p><strong>Dibuat oleh:</strong> Gerald Ibrani</p>
+        <p>Kalkulator ini dikembangkan sebagai proyek sekolah untuk mendemonstrasikan keterampilan JavaScript dan konsep dasar pengembangan web.</p>
+        <h3>Fitur-fitur:</h3>
+        <ul>
+          <li>Operasi aritmatika dasar (tambah, kurang, kali, bagi)</li>
+          <li>Operasi lanjutan (pangkat, akar kuadrat, persen)</li>
+          <li>Fungsi hapus (DEL) dan bersihkan semua (AC)</li>
+          <li>Desain responsif untuk desktop dan mobile</li>
+          <li>Pilihan tema (Light, Dark, Blue, Green)</li>
+          <li>Riwayat perhitungan</li>
+          <li>Konverter panjang (cm ke inci)</li>
+          <li>Dukungan input keyboard</li>
+          <li>Animasi dan efek visual menarik</li>
+        </ul>
+        <h3>Cara penggunaan:</h3>
+        <ol>
+          <li>Pilih jenis perangkat (desktop/mobile) saat memulai</li>
+          <li>Masukkan angka menggunakan tombol kalkulator atau keyboard</li>
+          <li>Pilih operasi yang diinginkan</li>
+          <li>Tekan tombol "=" atau Enter untuk melihat hasil</li>
+          <li>Gunakan tombol AC untuk menghapus semua, atau DEL untuk menghapus digit terakhir</li>
+          <li>Ubah tema menggunakan tombol tema di sebelah kiri</li>
+          <li>Lihat riwayat perhitungan di panel sebelah kanan</li>
+          <li>Gunakan konverter panjang untuk mengubah cm ke inci</li>
+        </ol>
+        <h3>Teknologi yang digunakan:</h3>
+        <ul>
+          <li>HTML5 untuk struktur</li>
+          <li>CSS3 untuk styling dan animasi</li>
+          <li>JavaScript (ES6+) untuk logika dan interaktivitas</li>
+          <li>Responsive design dengan CSS Flexbox dan Grid</li>
+          <li>Custom CSS animations dan transitions</li>
+        </ul>
+        <h3>Pengembangan Masa Depan:</h3>
+        <ul>
+          <li>Menambahkan lebih banyak fungsi matematika lanjutan</li>
+          <li>Implementasi sistem penyimpanan lokal untuk menyimpan riwayat perhitungan</li>
+          <li>Opsi untuk mengekspor riwayat perhitungan</li>
+          <li>Penambahan lebih banyak jenis konversi satuan</li>
+        </ul>
+        <p class="thank-you">Terima kasih telah menggunakan kalkulator ini! Umpan balik dan saran sangat dihargai untuk pengembangan lebih lanjut.</p>
+      </div>
       <div id="password-prompt">
         <input type="password" id="password-input" placeholder="Masukkan password">
         <button id="submit-password">Lihat Gambar</button>
       </div>
-      <img id="character-art" src="https://raw.githubusercontent.com/heralt-vernandes/percobaan-calculator-dua/main/illust_122940393_20241001_163709.jpg" alt="Karakter Art">
+      <img id="character-art" src="https://raw.githubusercontent.com/heralt-vernandes/percobaan-calculator-dua/PUSAT/Tak%20berjudul16.2024.05.10-09.12.png" alt="Karakter Art">
     </div>
   </div>
   
@@ -695,6 +1082,13 @@
     addClickAnimation(equalsButton);
     calculator.compute();
     calculator.updateDisplay();
+    
+    // Tambahkan efek getaran pada output
+    const output = document.querySelector('.output');
+    output.classList.add('shake');
+    setTimeout(() => {
+      output.classList.remove('shake');
+    }, 500);
   });
   
   allClearButton.addEventListener('click', button => {
@@ -741,7 +1135,12 @@
     const historyList = document.getElementById('history-list');
     const listItem = document.createElement('li');
     listItem.textContent = calculation;
+    listItem.style.opacity = '0';
     historyList.insertBefore(listItem, historyList.firstChild);
+    
+    setTimeout(() => {
+      listItem.style.opacity = '1';
+    }, 10);
     
     if (historyList.children.length > 10) {
       historyList.removeChild(historyList.lastChild);
@@ -758,7 +1157,7 @@
   });
 
   // Theme toggle
-  const themeButtons = document.querySelectorAll('.theme-buttons button');
+  const themeButtons = document.querySelectorAll('.theme-button');
   const body = document.body;
 
   themeButtons.forEach(button => {
@@ -766,6 +1165,11 @@
       const theme = this.id.split('-')[1];
       body.className = ''; // Remove all themes
       body.classList.add(`theme-${theme}`);
+      
+      // Tambahkan efek flash saat mengganti tema
+      document.body.style.animation = 'none';
+      document.body.offsetHeight; // Trigger reflow
+      document.body.style.animation = null;
     });
   });
 
@@ -805,6 +1209,78 @@
     } else {
       alert('Password salah. Coba lagi.');
     }
+  });
+
+  // Tambahkan kode untuk pemilihan perangkat
+  const deviceSelectionModal = document.getElementById('device-selection-modal');
+  const desktopBtn = document.getElementById('desktop-btn');
+  const mobileBtn = document.getElementById('mobile-btn');
+
+  // Fungsi untuk menampilkan modal pemilihan perangkat
+  function showDeviceSelectionModal() {
+    deviceSelectionModal.style.display = 'flex';
+  }
+
+  function setDeviceType(type) {
+    document.body.classList.add(`device-${type}`);
+    deviceSelectionModal.style.display = 'none';
+    
+    if (type === 'mobile') {
+      // Sesuaikan tampilan untuk mobile
+      document.querySelector('.page-container').style.flexDirection = 'column';
+      document.querySelector('.calculator-grid').style.transform = 'scale(1)'; // Ubah ini dari 0.8 menjadi 1
+      document.querySelector('.left-column').style.order = '-1';
+      document.querySelector('.right-column').style.width = '100%';
+      document.querySelector('.right-column').style.maxWidth = '300px';
+    }
+  }
+
+  desktopBtn.addEventListener('click', () => setDeviceType('desktop'));
+  mobileBtn.addEventListener('click', () => setDeviceType('mobile'));
+
+  // Tampilkan modal pemilihan perangkat saat halaman dimuat
+  window.addEventListener('load', showDeviceSelectionModal);
+
+  // Hapus deteksi otomatis dan biarkan pengguna memilih
+  // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+  //   setDeviceType('mobile');
+  // } else {
+  //   setDeviceType('desktop');
+  // }
+  
+  // Tambahkan gelembung ke latar belakang
+  function createBubbles() {
+    const bubbleCount = 20;
+    const container = document.body;
+
+    for (let i = 0; i < bubbleCount; i++) {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      
+      const size = Math.random() * 100 + 50;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      
+      bubble.style.left = `${Math.random() * 100}vw`;
+      bubble.style.top = `${Math.random() * 100}vh`;
+      
+      bubble.style.animationDuration = `${Math.random() * 2 + 4}s`;
+      bubble.style.animationDelay = `${Math.random() * 2}s`;
+
+      container.appendChild(bubble);
+    }
+  }
+
+  // Panggil fungsi createBubbles saat halaman dimuat
+  window.addEventListener('load', createBubbles);
+
+  // Tambahkan efek getaran saat tombol ditekan
+  document.querySelectorAll('.calculator-grid button').forEach(button => {
+    button.addEventListener('click', () => {
+      button.style.animation = 'none';
+      button.offsetHeight; // Trigger reflow
+      button.style.animation = 'buttonClick 0.1s linear';
+    });
   });
   </script>
 </body>
