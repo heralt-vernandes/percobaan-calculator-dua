@@ -13,7 +13,7 @@
     font-weight: normal;
   }
 
-  /* Tambahkan animasi latar belakang */
+
   @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 10% 50%; }
@@ -224,8 +224,8 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     max-width: 600px;
     width: 90%;
-    max-height: 80vh; /* Set maximum height */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 80vh; 
+    overflow-y: auto; 
     animation: modalFadeIn 0.5s ease-out;
   }
 
@@ -377,7 +377,7 @@
   }
 
   #logo {
-    width: 100px; /* Adjust as needed */
+    width: 100px; 
     height: auto;
     margin-bottom: 10px;
   }
@@ -396,7 +396,6 @@
     background-color: rgba(255, 255, 255, 0.8);
   }
 
-  /* Modal styles remain the same */
   #character-art {
     width: 200px;
     height: auto;
@@ -472,7 +471,6 @@
     cursor: pointer;
   }
 
-  /* Theme classes */
   .theme-light {
     --background: linear-gradient(to right, #ff9966, #ff5e62);
     --button-bg: rgba(255, 255, 255, 0.75);
@@ -535,7 +533,7 @@
     margin-right: auto;
   }
 
-  /* Add some padding to the bottom of the modal content */
+
   .modal-content::after {
     content: "";
     display: block;
@@ -557,9 +555,9 @@
     margin-top: 20px;
   }
 
-  /* Tambahkan style baru untuk modal pemilihan perangkat */
+
   #device-selection-modal {
-    display: none; /* Ubah ini dari 'flex' menjadi 'none' */
+    display: none; 
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -585,7 +583,7 @@
     cursor: pointer;
   }
 
-  /* Style untuk tampilan mobile */
+
   @media (max-width: 768px) {
     .page-container {
       flex-direction: column;
@@ -626,7 +624,7 @@
     }
   }
 
-  /* Tambahkan animasi megah */
+
   @keyframes floatingCalculator {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
@@ -651,7 +649,7 @@
     transition: all 0.3s ease;
   }
 
-  /* Tambahkan efek parallax pada latar belakang */
+
   body::before {
     content: '';
     position: fixed;
@@ -670,7 +668,7 @@
     100% { transform: translateY(0) scale(1.1); }
   }
 
-  /* Tambahkan efek gelembung di latar belakang */
+
   .bubble {
     position: absolute;
     border-radius: 50%;
@@ -685,7 +683,7 @@
     100% { transform: translateY(0) rotate(360deg); }
   }
 
-  /* Animasi untuk tombol sama dengan */
+
   @keyframes pulseEquals {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
@@ -696,7 +694,7 @@
     animation: pulseEquals 1.5s infinite;
   }
 
-  /* Animasi untuk output */
+
   @keyframes glowOutput {
     0% { box-shadow: 0 0 5px var(--output-color); }
     50% { box-shadow: 0 0 20px var(--output-color); }
@@ -708,12 +706,12 @@
   }
 
   .about-content.scrollable {
-    max-height: 60vh; /* Adjust this value as needed */
+    max-height: 60vh; 
     overflow-y: auto;
-    padding-right: 15px; /* Add some padding for the scrollbar */
+    padding-right: 15px; 
   }
 
-  /* Style the scrollbar */
+
   .about-content.scrollable::-webkit-scrollbar {
     width: 8px;
   }
@@ -769,7 +767,7 @@
     transform: scale(1.1);
   }
 
-  /* Add these new styles */
+
   #theme-light {
     background: linear-gradient(to right, #ff9966, #ff5e62);
   }
@@ -782,7 +780,7 @@
     background: linear-gradient(to right, #2196f3, #f44336);
   }
 
-  /* Update media query */
+
   @media (max-width: 768px) {
     .theme-selector {
       padding: 8px 12px;
@@ -802,7 +800,7 @@
 </style>
 </head>
 <body class="theme-light">
-  <!-- Tambahkan modal pemilihan perangkat -->
+
   <div id="device-selection-modal">
     <div class="device-selection-content">
       <h2>Pilih Jenis Perangkat</h2>
@@ -864,7 +862,7 @@
     </div>
   </div>
 
-  <!-- Updated About modal with scrollable content -->
+
   <div id="about-modal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
@@ -1076,7 +1074,6 @@
     calculator.compute();
     calculator.updateDisplay();
 
-    // Tambahkan efek getaran pada output
     const output = document.querySelector('.output');
     output.classList.add('shake');
     setTimeout(() => {
@@ -1092,16 +1089,16 @@
     calculator.clear();
     calculator.updateDisplay();
 
-    // Increment the click count
+
     acClickCount++;
 
-    // If the button is clicked 3 times in a row, open the URL
+
     if (acClickCount === 3) {
       window.open('https://heralt-vernandes.github.io/Jam/', '_blank');
-      acClickCount = 0; // Reset the count
+      acClickCount = 0; 
     }
 
-    // Reset the click count if no click occurs within 1 second
+
     clearTimeout(acClickTimer);
     acClickTimer = setTimeout(() => {
       acClickCount = 0;
@@ -1116,7 +1113,7 @@
     calculator.updateDisplay();
   })
 
-  // About modal functionality
+
   const aboutBtn = document.getElementById("about-btn");
   const aboutModal = document.getElementById("about-modal");
   const closeBtn = aboutModal.querySelector(".close");
@@ -1135,7 +1132,7 @@
     }
   }
 
-  // History function
+
   function addToHistory(calculation) {
     const historyList = document.getElementById('history-list');
     const listItem = document.createElement('li');
@@ -1152,7 +1149,7 @@
     }
   }
 
-  // Converter
+
   const cmInput = document.getElementById('cm-input');
   const inchInput = document.getElementById('inch-input');
 
@@ -1161,37 +1158,37 @@
     inchInput.value = cm ? (cm / 2.54).toFixed(2) : '';
   });
 
-  // Theme toggle
+
   const themeButtons = document.querySelectorAll('.theme-button');
   const body = document.body;
 
   themeButtons.forEach(button => {
     button.addEventListener('click', function() {
       const theme = this.id.split('-')[1];
-      body.className = ''; // Remove all themes
+      body.className = ''; 
       body.classList.add(`theme-${theme}`);
 
-      // Remove active class from all buttons and add to clicked button
+
       themeButtons.forEach(btn => btn.classList.remove('active'));
       this.classList.add('active');
 
-      // Update calculator background color based on the selected theme
+
       const calculator = document.querySelector('.calculator-grid');
       calculator.style.backgroundColor = getComputedStyle(this).background;
 
-      // Tambahkan efek flash saat mengganti tema
+
       document.body.style.animation = 'none';
-      document.body.offsetHeight; // Trigger reflow
+      document.body.offsetHeight; 
       document.body.style.animation = null;
     });
   });
 
-  // Set initial active theme and calculator background
+
   const initialTheme = document.getElementById('theme-light');
   initialTheme.classList.add('active');
   document.querySelector('.calculator-grid').style.backgroundColor = getComputedStyle(initialTheme).background;
 
-  // Keyboard support
+
   document.addEventListener('keydown', function(event) {
     const key = event.key;
     if (/[0-9]/.test(key)) {
@@ -1213,11 +1210,11 @@
     }
   });
 
-  // Password protection for the image
+
   const passwordInput = document.getElementById('password-input');
   const submitPassword = document.getElementById('submit-password');
   const characterArt = document.getElementById('character-art');
-  const correctPassword = 'prototype'; // Password changed to "prototype"
+  const correctPassword = 'prototype';
 
   submitPassword.addEventListener('click', function() {
     if (passwordInput.value.toLowerCase() === correctPassword) {
@@ -1229,12 +1226,12 @@
     }
   });
 
-  // Tambahkan kode untuk pemilihan perangkat
+
   const deviceSelectionModal = document.getElementById('device-selection-modal');
   const desktopBtn = document.getElementById('desktop-btn');
   const mobileBtn = document.getElementById('mobile-btn');
 
-  // Fungsi untuk menampilkan modal pemilihan perangkat
+
   function showDeviceSelectionModal() {
     deviceSelectionModal.style.display = 'flex';
   }
@@ -1244,14 +1241,14 @@
     deviceSelectionModal.style.display = 'none';
 
     if (type === 'mobile') {
-      // Sesuaikan tampilan untuk mobile
+
       document.querySelector('.page-container').style.flexDirection = 'column';
-      document.querySelector('.calculator-grid').style.transform = 'scale(1)'; // Ubah ini dari 0.8 menjadi 1
+      document.querySelector('.calculator-grid').style.transform = 'scale(1)'; 
       document.querySelector('.left-column').style.order = '-1';
       document.querySelector('.right-column').style.width = '100%';
       document.querySelector('.right-column').style.maxWidth = '300px';
 
-      // Tambahkan kelas 'mobile' ke body untuk styling khusus mobile
+
       document.body.classList.add('mobile');
     }
   }
@@ -1259,17 +1256,9 @@
   desktopBtn.addEventListener('click', () => setDeviceType('desktop'));
   mobileBtn.addEventListener('click', () => setDeviceType('mobile'));
 
-  // Tampilkan modal pemilihan perangkat saat halaman dimuat
+
   window.addEventListener('load', showDeviceSelectionModal);
 
-  // Hapus deteksi otomatis dan biarkan pengguna memilih
-  // if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-  //   setDeviceType('mobile');
-  // } else {
-  //   setDeviceType('desktop');
-  // }
-
-  // Tambahkan gelembung ke latar belakang
   function createBubbles() {
     const bubbleCount = 20;
     const container = document.body;
@@ -1292,14 +1281,11 @@
     }
   }
 
-  // Panggil fungsi createBubbles saat halaman dimuat
   window.addEventListener('load', createBubbles);
-
-  // Tambahkan efek getaran saat tombol ditekan
   document.querySelectorAll('.calculator-grid button').forEach(button => {
     button.addEventListener('click', () => {
       button.style.animation = 'none';
-      button.offsetHeight; // Trigger reflow
+      button.offsetHeight; 
       button.style.animation = 'buttonClick 0.1s linear';
     });
   });
