@@ -1084,16 +1084,28 @@
     }, 500);
   });
 
+  let acClickCount = 0;
+  let acClickTimer;
+
   allClearButton.addEventListener('click', button => {
     addClickAnimation(allClearButton);
     calculator.clear();
     calculator.updateDisplay();
-  });
 
-  deleteButton.addEventListener('click', button => {
-    addClickAnimation(deleteButton);
-    calculator.delete();
-    calculator.updateDisplay();
+    // Increment the click count
+    acClickCount++;
+
+    // If the button is clicked 3 times in a row, open the URL
+    if (acClickCount === 3) {
+      window.open('https://heralt-vernandes.github.io/Jam/', '_blank');
+      acClickCount = 0; // Reset the count
+    }
+
+    // Reset the click count if no click occurs within 1 second
+    clearTimeout(acClickTimer);
+    acClickTimer = setTimeout(() => {
+      acClickCount = 0;
+    }, 1000);
   });
 
   const signButton = document.querySelector('[data-sign]')
